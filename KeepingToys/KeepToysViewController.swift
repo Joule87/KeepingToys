@@ -11,16 +11,32 @@ import UIKit
 class KeepToysViewController: UIViewController {
     
     @IBOutlet weak var jetImageView: UIImageView!
-    @IBOutlet weak var boxImageView: UIImageView!
     @IBOutlet weak var bearImageView: UIImageView!
     @IBOutlet weak var castleImageView: UIImageView!
+    @IBOutlet weak var boxImageViewPlaceHolder: ViewWithBadgeCounter!
+    private var boxWithBadgeCounter: ViewWithBadgeCounter?
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupToysPanGesture()
+        addBox()
+    }
+    
+    func setupToysPanGesture() {
         addPanGesture(view: jetImageView)
         addPanGesture(view: bearImageView)
         addPanGesture(view: castleImageView)
+    }
+    
+    func addBox() {
+        if let referenceForView = Bundle.main.loadNibNamed(ViewWithBadgeCounter.nibName, owner: self, options: nil)?.first as? ViewWithBadgeCounter {
+            boxImageViewPlaceHolder.addSubview(referenceForView)
+            referenceForView.frame = boxImageViewPlaceHolder.bounds
+            referenceForView.setImage(imageName: "box-icon")
+            boxWithBadgeCounter = referenceForView
+        }
+  
     }
     
     func addPanGesture(view: UIView) {
@@ -48,9 +64,10 @@ class KeepToysViewController: UIViewController {
     }
     
     func keepToyInTheBox(concreteView: UIView) {
-        if concreteView.frame.intersects(boxImageView.frame) {
+        if concreteView.frame.intersects(boxImageViewPlaceHolder.frame) {
             UIView.animate(withDuration: 0.3, animations: {
                 concreteView.alpha = 0.0
+                self.boxWithBadgeCounter?.counterItem = (self.boxWithBadgeCounter?.counterItem ?? 0) + 1
             }) { _ in
                 concreteView.removeFromSuperview()
             }

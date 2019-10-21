@@ -15,10 +15,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="box-icon" translatesAutoresizingMaskIntoConstraints="NO" id="vAf-p5-Aqa">
-                                <rect key="frame" x="264" y="712" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
-                            </imageView>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="jet-icon" translatesAutoresizingMaskIntoConstraints="NO" id="1M6-kE-zFt">
                                 <rect key="frame" x="20" y="64" width="80" height="80"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -34,13 +30,26 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3dU-2i-J5d" customClass="ViewWithBadgeCounter" customModule="KeepingToys" customModuleProvider="target">
+                                <rect key="frame" x="264" y="712" width="150" height="150"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="3dU-2i-J5d" secondAttribute="height" multiplier="1:1" id="DPa-Fv-Kzj"/>
+                                    <constraint firstAttribute="width" constant="150" id="GCN-GZ-Faw"/>
+                                    <constraint firstAttribute="height" constant="150" id="iBc-8u-uzP"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3dU-2i-J5d" secondAttribute="trailing" id="AT8-vo-Gf3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3dU-2i-J5d" secondAttribute="bottom" id="Lx8-TP-PGP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="bearImageView" destination="NWA-pa-lI5" id="Kjn-Iy-nRr"/>
-                        <outlet property="boxImageView" destination="vAf-p5-Aqa" id="JkF-AV-Hf8"/>
+                        <outlet property="boxImageViewPlaceHolder" destination="3dU-2i-J5d" id="592-Le-RzU"/>
                         <outlet property="castleImageView" destination="ZtS-Tj-cAn" id="A8u-4C-5Cx"/>
                         <outlet property="jetImageView" destination="1M6-kE-zFt" id="Uyp-HC-h52"/>
                     </connections>
@@ -52,7 +61,6 @@
     </scenes>
     <resources>
         <image name="bear-icon" width="20" height="20"/>
-        <image name="box-icon" width="50" height="50"/>
         <image name="castle-icon" width="24" height="24"/>
         <image name="jet-icon" width="20" height="20"/>
     </resources>
